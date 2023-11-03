@@ -12,10 +12,13 @@ import { projects } from '@/config/projects';
 import { experiences } from '@/config/experiences';
 import { socials } from '@/config/links';
 
+import { ParticlesContainer } from '@/components/ParticlesContainer';
+
 export default function Home() {
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-center text-center">
+      <main className="relative flex min-h-screen flex-col items-center justify-center text-center">
+        <ParticlesContainer />
         <h2 className={cn('text-6xl', lora.className)}>
           <i>hello! i&apos;m</i>
         </h2>
