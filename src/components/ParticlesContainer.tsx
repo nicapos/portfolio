@@ -17,7 +17,7 @@ export class ParticlesContainer extends React.PureComponent {
 
     return (
       <Particles
-        className="relative -z-10 opacity-30"
+        className="relative -z-10 hidden opacity-30 md:block"
         options={options}
         init={this.customInit}
       />

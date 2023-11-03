@@ -17,12 +17,12 @@ import { ParticlesContainer } from '@/components/ParticlesContainer';
 export default function Home() {
   return (
     <>
-      <main className="relative flex min-h-screen flex-col items-center justify-center text-center">
+      <main className="relative flex min-h-screen flex-col items-center justify-center text-center text-5xl md:text-6xl">
         <ParticlesContainer />
-        <h2 className={cn('text-6xl', lora.className)}>
+        <h2 className={lora.className}>
           <i>hello! i&apos;m</i>
         </h2>
-        <h1 className="mb-8 mt-2 text-6xl font-bold">Annika Posadas</h1>
+        <h1 className="mb-8 mt-2 font-bold">Annika Posadas</h1>
 
         <div className="flex gap-6">
           <Link href={socials.github} target="_blank">
@@ -47,7 +47,7 @@ export default function Home() {
       <section id="about-me" className="min-h-[50vh] px-6 py-24 lg:px-12">
         <h2 className="mb-2 text-4xl">about me</h2>
         <hr className="mb-6 h-1 w-60 border-0 bg-gradient-to-r from-[#FD4523] to-[#FFE74C]" />
-        <p className="mb-12 text-justify text-lg">
+        <p className="mb-12 text-justify lg:text-lg">
           I&apos;m a 4th year undergraduate student in De La Salle University,
           studying Computer Science with a major in Software Technology and a
           minor in Data Science. I have a strong background in web development,
@@ -89,7 +89,7 @@ export default function Home() {
           profile.
         </p>
 
-        <div className="grid grid-cols-1 justify-center gap-8 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 justify-center gap-x-8 gap-y-12 lg:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
             <ProjectCard key={project.title} {...project} />
           ))}
@@ -100,14 +100,14 @@ export default function Home() {
         <h2 className="mb-2 text-4xl">experience</h2>
         <hr className="mb-6 h-1 w-60 border-0 bg-gradient-to-r from-[#FD4523] to-[#FFE74C]" />
 
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-12">
           {experiences.map((exp) => (
             <ExperienceCard key={exp.company + exp.title} {...exp} />
           ))}
         </div>
       </section>
 
-      <section id="contact-me" className="min-h-[50vh] p-6 pt-24 lg:p-12">
+      <section id="contact-me" className="min-h-[50vh] p-6 md:pt-24 lg:p-12">
         <h2 className="mb-2 text-4xl">contact me</h2>
         <hr className="mb-10 h-1 w-60 border-0 bg-gradient-to-r from-[#FD4523] to-[#FFE74C]" />
 

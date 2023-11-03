@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn('container relative mx-auto', inter.className)}>
         <nav className="fixed inset-x-0 top-0 z-20">
-          <ul className="flex h-16 w-full items-center justify-center gap-12">
+          <ul className="hidden h-16 w-full items-center justify-center gap-12 lg:flex">
             {navLinks.map(({ name, href }) => (
               <li key={name}>
                 <Link href={href}>{name}</Link>
@@ -39,7 +39,7 @@ export default function RootLayout({
 
         {children}
 
-        <footer className="py-8 text-center opacity-50">
+        <footer className="p-8 text-center opacity-50">
           Built with Next.js and TailwindCSS, deployed with Vercel. <br />
           &copy; Annika Posadas. All rights reserved.
         </footer>
