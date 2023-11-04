@@ -10,3 +10,18 @@ body {
 nav {
   background: #121212;
 }
+
+.gradient-underline {
+  @apply relative after:absolute after:inset-x-0 after:-bottom-1 
+    after:-z-10 after:h-[2px] after:transform 
+    after:bg-gradient-to-r after:from-[#FFE74C] after:to-[#4392F1]
+    after:bg-origin-border;
+}
+
+.gradient-link {
+  @apply gradient-underline hover:font-medium;
+}
+
+nav a:hover {
+  @apply gradient-underline;
+}

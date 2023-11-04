@@ -1,23 +1,24 @@
 import { lora } from '@/lib/fonts';
-import { cn } from '@/lib/utils';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import ExperienceCard from '@/components/ExperienceCard';
 import ProjectCard from '@/components/ProjectCard';
 import TagGroup from '@/components/TagGroup';
+import ParticlesContainer from '@/components/ParticlesContainer';
 
 import { skills } from '@/config/skills';
 import { projects } from '@/config/projects';
 import { experiences } from '@/config/experiences';
 import { socials } from '@/config/links';
 
-import { ParticlesContainer } from '@/components/ParticlesContainer';
-
 export default function Home() {
   return (
     <>
-      <main className="relative flex min-h-screen flex-col items-center justify-center text-center text-5xl md:text-6xl">
+      <main
+        id="main"
+        className="relative flex min-h-screen flex-col items-center justify-center text-center text-5xl md:text-6xl"
+      >
         <ParticlesContainer />
         <h2 className={lora.className}>
           <i>hello! i&apos;m</i>
@@ -46,7 +47,7 @@ export default function Home() {
 
       <section id="about-me" className="min-h-[50vh] px-6 py-24 lg:px-12">
         <h2 className="mb-2 text-4xl">about me</h2>
-        <hr className="mb-6 h-1 w-60 border-0 bg-gradient-to-r from-[#FD4523] to-[#FFE74C]" />
+        <hr className="mb-4 h-1 w-60 border-0 bg-gradient-to-r from-[#FD4523] to-[#FFE74C]" />
         <p className="mb-12 text-justify lg:text-lg">
           I&apos;m a 4th year undergraduate student in De La Salle University,
           studying Computer Science with a major in Software Technology and a
@@ -85,8 +86,10 @@ export default function Home() {
 
         <p className="mb-6">
           Here are some projects I&apos;ve worked as a part of my courseworks or
-          during my free time. To view more projects, check out my GitHub
-          profile.
+          during my free time. To view more projects, check out my{' '}
+          <Link className="gradient-link" href={socials.github}>
+            GitHub profile.
+          </Link>
         </p>
 
         <div className="grid grid-cols-1 justify-center gap-x-8 gap-y-12 lg:grid-cols-2 xl:grid-cols-3">

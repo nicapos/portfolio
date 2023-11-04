@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const navLinks = [
-    { name: 'home', href: '/' },
+    { name: 'home', href: '/#main' },
     { name: 'about me', href: '/#about-me' },
     { name: 'projects', href: '/#projects' },
     { name: 'experience', href: '/#experience' },
@@ -25,7 +25,7 @@ export default function RootLayout({
   ];
 
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={cn('container relative mx-auto', inter.className)}>
         <nav className="fixed inset-x-0 top-0 z-20">
           <ul className="hidden h-16 w-full items-center justify-center gap-12 lg:flex">

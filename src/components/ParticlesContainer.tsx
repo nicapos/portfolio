@@ -5,7 +5,7 @@ import Particles from 'react-particles';
 import type { Engine } from 'tsparticles-engine';
 import { loadLinksPreset } from 'tsparticles-preset-links';
 
-export class ParticlesContainer extends React.PureComponent {
+export default class ParticlesContainer extends React.PureComponent {
   async customInit(engine: Engine): Promise<void> {
     await loadLinksPreset(engine);
   }
