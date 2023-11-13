@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Script from 'next/script';
 
 import { cn } from '@/lib/utils';
 import { inter } from '@/lib/fonts';
@@ -26,6 +27,17 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth">
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-KF55MK96ES"></Script>
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-KF55MK96ES');
+        `}
+      </Script>
+
       <body className={cn('container relative mx-auto', inter.className)}>
         <nav className="fixed inset-x-0 top-0 z-20">
           <ul className="hidden h-16 w-full items-center justify-center gap-12 lg:flex">
