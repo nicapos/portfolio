@@ -1,6 +1,6 @@
-import { getAllProjects, Project } from './projects';
-import { getExperiencesByType, Experience } from './experiences';
-import { getAllSkillGroups, SkillGroup } from './skills';
+import { getAllProjects, Project } from './services/projects';
+import { getExperiencesByType, Experience } from './services/experiences';
+import { getAllSkillGroups, SkillGroup } from './services/skills';
 
 export type { Project, Experience, SkillGroup };
 
