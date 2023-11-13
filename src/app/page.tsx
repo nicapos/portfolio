@@ -1,5 +1,3 @@
-import { lora } from '@/lib/fonts';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import ExperienceCard from '@/components/ExperienceCard';
@@ -7,10 +5,10 @@ import ProjectCard from '@/components/ProjectCard';
 import TagGroup from '@/components/TagGroup';
 import ParticlesContainer from '@/components/ParticlesContainer';
 
-import { socials } from '@/config/links';
-
 import api from '@/lib/api';
+import { lora } from '@/lib/fonts';
 import { splitArray } from '@/lib/utils';
+import { socials } from '@/config/links';
 
 export default async function Home() {
   const projects = await api.getAllProjects();
