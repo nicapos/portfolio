@@ -8,13 +8,15 @@ import TagGroup from '@/components/TagGroup';
 import ParticlesContainer from '@/components/ParticlesContainer';
 
 import { skills } from '@/config/skills';
-import { experiences } from '@/config/experiences';
 import { socials } from '@/config/links';
 
-import api, { Project } from '@/lib/api';
+import api from '@/lib/api';
 
 export default async function Home() {
-  const projects: Project[] = await api.getAllProjects();
+  const projects = await api.getAllProjects();
+
+  const workExperiences = await api.getExperiencesByType('work');
+  const orgExperiences = await api.getExperiencesByType('org');
 
   return (
     <>
@@ -107,7 +109,7 @@ export default async function Home() {
         <hr className="mb-6 h-1 w-60 border-0 bg-gradient-to-r from-[#FD4523] to-[#FFE74C]" />
 
         <div className="flex flex-col gap-12">
-          {experiences.map((exp) => (
+          {[...workExperiences, ...orgExperiences].map((exp) => (
             <ExperienceCard key={exp.company + exp.title} {...exp} />
           ))}
         </div>

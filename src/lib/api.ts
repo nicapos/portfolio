@@ -31,8 +31,44 @@ const getAllProjects = async (): Promise<Project[]> => {
   }
 };
 
+type ExperienceType = 'work' | 'org';
+
+export type Experience = {
+  title: string;
+  company?: string;
+  start_date?: string;
+  end_date?: string;
+  descriptions?: string[];
+  tags?: string[];
+  type?: ExperienceType;
+};
+
+const getExperiencesByType = async (
+  type: ExperienceType
+): Promise<Experience[]> => {
+  try {
+    const collectionRef = collection(db, 'experiences');
+    const q = query(
+      collectionRef,
+      where('show_flag', '==', true),
+      where('type', '==', type)
+    );
+    const querySnapshot = await getDocs(q);
+
+    const experiences: Experience[] = querySnapshot.docs.map(
+      (doc) => doc.data() as Experience
+    );
+
+    return experiences;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return [];
+  }
+};
+
 const api = {
   getAllProjects,
+  getExperiencesByType,
 };
 
 export default api;

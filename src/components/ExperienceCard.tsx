@@ -1,37 +1,38 @@
-import { Experience } from '@/config/experiences';
-import { cn } from '@/lib/utils';
+import { Experience } from '@/lib/api';
 import TagGroup from './TagGroup';
 
 const ExperienceCard = (props: Experience) => {
   const {
     title,
     company,
-    description,
-    startDate,
-    endDate = 'present',
-    tags,
+    descriptions = [],
+    start_date,
+    end_date,
+    tags = [],
   } = props;
 
-  const descriptions =
-    typeof description === 'string'
-      ? description
-      : description.map((desc) => <li key={desc}>{desc}</li>);
+  const descriptionSection =
+    descriptions.length >= 2 ? (
+      <ul className="mb-4 list-disc pl-5">
+        {descriptions.map((desc) => (
+          <li key={desc}>{desc}</li>
+        ))}
+      </ul>
+    ) : (
+      <p className="mb-4">{descriptions}</p>
+    );
 
   return (
     <div className="flex flex-col">
-      <i>
-        {startDate} - {endDate}
-      </i>
+      {start_date && (
+        <i>
+          {start_date} - {end_date || 'present'}
+        </i>
+      )}
       <p className="mb-2 text-xl">
         <b>{title}</b> – {company}
       </p>
-      <ul
-        className={cn('mb-4 list-disc', {
-          'pl-5': typeof description != 'string',
-        })}
-      >
-        {descriptions}
-      </ul>
+      {descriptionSection}
       <TagGroup tags={tags} />
     </div>
   );
