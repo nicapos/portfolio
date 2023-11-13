@@ -66,9 +66,36 @@ const getExperiencesByType = async (
   }
 };
 
+type SkillGroup = {
+  title: string;
+  skills: string[];
+};
+
+const getAllSkillGroups = async (): Promise<SkillGroup[]> => {
+  try {
+    const collectionRef = collection(db, 'skill_groups');
+    const q = query(
+      collectionRef,
+      where('show_flag', '==', true),
+      orderBy('order')
+    );
+    const querySnapshot = await getDocs(q);
+
+    const skillGroups: SkillGroup[] = querySnapshot.docs.map(
+      (doc) => doc.data() as SkillGroup
+    );
+
+    return skillGroups;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return [];
+  }
+};
+
 const api = {
   getAllProjects,
   getExperiencesByType,
+  getAllSkillGroups,
 };
 
 export default api;

@@ -7,16 +7,18 @@ import ProjectCard from '@/components/ProjectCard';
 import TagGroup from '@/components/TagGroup';
 import ParticlesContainer from '@/components/ParticlesContainer';
 
-import { skills } from '@/config/skills';
 import { socials } from '@/config/links';
 
 import api from '@/lib/api';
+import { splitArray } from '@/lib/utils';
 
 export default async function Home() {
   const projects = await api.getAllProjects();
 
   const workExperiences = await api.getExperiencesByType('work');
   const orgExperiences = await api.getExperiencesByType('org');
+
+  const skillGroups = await api.getAllSkillGroups();
 
   return (
     <>
@@ -65,23 +67,16 @@ export default async function Home() {
         </p>
 
         <div className="flex flex-wrap gap-y-6 md:gap-x-6">
-          <div className="flex flex-col gap-6 md:flex-1">
-            {skills.slice(0, 3).map((skillGroup) => (
-              <div key={skillGroup.title}>
-                <h3 className="mb-2 text-2xl">{skillGroup.title}</h3>
-                <TagGroup tags={skillGroup.tags} />
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-6 lg:w-1/3 xl:w-5/12">
-            {skills.slice(3, 6).map((skillGroup) => (
-              <div key={skillGroup.title}>
-                <h3 className="mb-2 text-2xl">{skillGroup.title}</h3>
-                <TagGroup tags={skillGroup.tags} />
-              </div>
-            ))}
-          </div>
+          {splitArray(skillGroups, 2).map((groups, idx) => (
+            <div key={idx} className="flex flex-col gap-6 md:flex-1">
+              {groups.map((group) => (
+                <div key={group.title}>
+                  <h3 className="mb-2 text-2xl">{group.title}</h3>
+                  <TagGroup tags={group.skills} />
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
