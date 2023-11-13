@@ -1,22 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import TagGroup from './TagGroup';
-import { Project } from '@/config/projects';
+import { Project } from '@/lib/api';
 
 const ProjectCard = (props: Project) => {
   const {
     title,
-    coverImageURL,
+    cover_image,
     tags = [],
     description,
-    githubURL,
-    websiteURL,
+    repo_url,
+    deploy_url,
   } = props;
 
-  const imageURL = coverImageURL ?? '/placeholder.svg';
-  const imageAlt = coverImageURL ? `${title} preview` : 'placeholder';
+  const imageURL = cover_image ?? '/placeholder.svg';
+  const imageAlt = cover_image ? `${title} preview` : 'placeholder';
 
-  const mainLink = websiteURL || githubURL || '#';
+  const mainLink = deploy_url || repo_url || '#';
 
   const hoverLinkProps = {
     className: 'flex flex-1 items-center justify-center',
@@ -29,14 +29,14 @@ const ProjectCard = (props: Project) => {
         <Image src={imageURL} alt={imageAlt} className="object-cover" fill />
 
         <div className="absolute left-0 top-0 hidden aspect-[3/2] w-full flex-col bg-black py-12 text-center text-lg opacity-50 group-hover:flex">
-          {githubURL && (
-            <Link href={githubURL} {...hoverLinkProps}>
+          {repo_url && (
+            <Link href={repo_url} {...hoverLinkProps}>
               View on GitHub
             </Link>
           )}
-          {githubURL && websiteURL && <p>or</p>}
-          {websiteURL && (
-            <Link href={websiteURL} {...hoverLinkProps}>
+          {repo_url && deploy_url && <p>or</p>}
+          {deploy_url && (
+            <Link href={deploy_url} {...hoverLinkProps}>
               View website
             </Link>
           )}

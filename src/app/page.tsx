@@ -8,11 +8,14 @@ import TagGroup from '@/components/TagGroup';
 import ParticlesContainer from '@/components/ParticlesContainer';
 
 import { skills } from '@/config/skills';
-import { projects } from '@/config/projects';
 import { experiences } from '@/config/experiences';
 import { socials } from '@/config/links';
 
-export default function Home() {
+import api, { Project } from '@/lib/api';
+
+export default async function Home() {
+  const projects: Project[] = await api.getAllProjects();
+
   return (
     <>
       <main
